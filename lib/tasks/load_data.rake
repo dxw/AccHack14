@@ -3,10 +3,11 @@ require 'csv'
 namespace :load_data do
   task local_authorities: :environment do
     LocalAuthority.destroy_all
-    CSV.foreach("data/homelessness_data.csv") do |row|
+    CSV.foreach("data/social-housing-sales.csv") do |row|
       LocalAuthority.create(
         la_code: row[0],
-        name:    row[1],
+        electoral_code: row[2],
+        name:    row[3],
       )
       print "."
     end
