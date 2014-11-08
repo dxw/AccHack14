@@ -6,9 +6,9 @@ namespace :fetch do
   desc "Fetch all social housing figures"
   task :social_housing => :environment do
     SocialHousing.delete_all
+    conn = connection(url)
 
     electoral_authorities.each do |electoral_authority|
-      conn = connection(url)
       params.merge!(Hash["dm/2011STATH", electoral_authority])
       response = conn.get("#{url}/#{data_set}.json", params)
       json = JSON.parse(response.body)
