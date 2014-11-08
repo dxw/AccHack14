@@ -1,0 +1,46 @@
+.la-show {
+  header {
+    margin-bottom: 30px;
+  }
+}
+
+.house {
+  @extend .large-2;
+  @extend .columns;
+}
+
+.stat {
+  @extend .large-5;
+  @extend .columns;
+  font-size: rem-calc(110);
+  line-height: rem-calc(110);
+  margin-bottom: 20px;
+
+  .type {
+    font-size: rem-calc(30);
+    line-height: rem-calc(30);
+    margin-bottom: 20px;
+  }
+
+  &.sm {
+    font-size: rem-calc(70);
+    line-height: rem-calc(70);
+
+    .type {
+      font-size: rem-calc(20);
+      line-height: rem-calc(20);
+    }
+  }
+
+  .average, .compare {
+    font-size: rem-calc(16);
+    line-height: rem-calc(16);
+    margin-bottom: 10px;
+
+    .line {
+      display: inline-block;
+      width: 100%;
+      border-top: 8px solid $primary-color;
+    }
+  }
+}
