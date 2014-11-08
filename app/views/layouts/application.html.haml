@@ -13,5 +13,13 @@
     %header
       = render 'layouts/navigation'
     %main{:role => "main"}
-      = render 'layouts/messages'
-      = yield
+      .row
+        .large-12.columns
+          = render 'layouts/messages'
+          = yield
+    %footer
+      .row
+        .large-12.columns
+          %hr
+          = render 'layouts/footer'
+
