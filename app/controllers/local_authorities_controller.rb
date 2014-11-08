@@ -3,6 +3,6 @@ class LocalAuthoritiesController < ApplicationController
     @local_authorities = LocalAuthority.all
   end
   def show
-    @local_authority = LocalAuthority.find(params[:id])
+    @local_authority = LocalAuthority.find_by_la_code(params[:id])
   end
 end
