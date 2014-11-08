@@ -13,7 +13,7 @@ namespace :fetch do
       response = conn.get("#{url}/#{data_set}.json", params)
       json = JSON.parse(response.body)
 
-      construct_social_housing(json)
+      construct_social_housing(electoral_authority, json)
     end
   end
 end
@@ -70,7 +70,7 @@ def electoral_authorities
   ]
 end
 
-def construct_social_housing(json)
+def construct_social_housing(auth, json)
   values = json["QS403EW"]["value"]
   dimension = json["QS403EW"]["dimension"]
   key_array = dimension["CL_0000073"]["category"]["index"]
@@ -79,6 +79,6 @@ def construct_social_housing(json)
     rent: values[key_array["CI_0000069"].to_s],
     other: values[key_array["CI_0000068"].to_s],
     total: values[key_array["CI_0000115"].to_s],
-    electoral_authority: electoral_authority
+    electoral_authority: auth
   ])
 end
