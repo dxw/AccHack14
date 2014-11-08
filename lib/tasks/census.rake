@@ -3,6 +3,12 @@ require 'faraday'
 require 'csv'
 
 namespace :fetch do
+  desc "Fetch everything to do with social housing"
+  task :social_housing => :environment do
+    Rake::Task["fetch:social_housing_people"].execute
+    Rake::Task["fetch:social_housing_households"].execute
+  end
+
   desc "Fetch all social housing figures"
   task :social_housing_people => :environment do
     SocialHousing.delete_all
@@ -30,11 +36,36 @@ namespace :fetch do
       dimension = json[tenure_household_data_set]["dimension"]
       key_array = dimension["CL_0000073"]["category"]["index"]
 
-      social_rented_total = values[key_array["CI_0000115"].to_s]
-
       social_housing = SocialHousing.find_by_electoral_code(electoral_authority)
-      social_housing.households = social_rented_total
+      social_housing.household_council_rent = values[key_array["CI_0000069"].to_s]
+      social_housing.household_other_rent = values[key_array["CI_0000068"].to_s]
+      social_housing.household_total_rent = values[key_array["CI_0000115"].to_s]
       social_housing.save
+    end
+  end
+
+  desc "Total households for local_authorities"
+  task :total_households => :environment do
+    conn = connection(url)
+    params["geog"] = "2011WARDH"
+    # first_half, second_half = *electoral_authorities.each_slice(electoral_authorities.count/2).to_a
+
+    # Things have gotten very wet around here soz :'(
+    electoral_authorities.each do |electoral_authority|
+      conn = connection(url)
+
+      params.merge!(Hash["dm/2011WARDH", electoral_authority])
+      response = conn.get("#{url}/#{household_data_set}.json", params)
+      json = JSON.parse(response.body)
+
+      values = json[household_data_set]["value"]
+      dimension = json[household_data_set]["dimension"]
+      key_array = dimension["CL_0000050"]["category"]["index"]
+
+
+      local_authority = LocalAuthority.find_by_electoral_code(electoral_authority)
+      local_authority.total_households = values[key_array["CI_0000366"].to_s]
+      local_authority.save
     end
   end
 end
@@ -81,15 +112,19 @@ def tenure_household_data_set
   @tenure_household_data_set ||= "QS405EW"
 end
 
+def household_data_set
+  @household_data_set ||= "QS113EW"
+end
+
 def construct_social_housing(auth, json)
   values = json[tenure_person_data_set]["value"]
   dimension = json[tenure_person_data_set]["dimension"]
   key_array = dimension["CL_0000073"]["category"]["index"]
 
   SocialHousing.create(Hash[
-    council_rent: values[key_array["CI_0000069"].to_s],
-    other_rent: values[key_array["CI_0000068"].to_s],
-    total_rent: values[key_array["CI_0000115"].to_s],
+    person_council_rent: values[key_array["CI_0000069"].to_s],
+    person_other_rent: values[key_array["CI_0000068"].to_s],
+    person_total_rent: values[key_array["CI_0000115"].to_s],
     electoral_code: auth
   ])
 end

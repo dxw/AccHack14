@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108211400) do
+ActiveRecord::Schema.define(version: 20141108221149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,9 +29,10 @@ ActiveRecord::Schema.define(version: 20141108211400) do
   end
 
   create_table "local_authorities", force: true do |t|
-    t.string "la_code"
-    t.string "name"
-    t.string "electoral_code"
+    t.string  "la_code"
+    t.string  "name"
+    t.string  "electoral_code"
+    t.integer "total_households"
   end
 
   create_table "social_housing_sales", force: true do |t|
@@ -40,11 +41,13 @@ ActiveRecord::Schema.define(version: 20141108211400) do
   end
 
   create_table "social_housings", force: true do |t|
-    t.integer "council_rent",   default: 0
-    t.integer "other_rent",     default: 0
-    t.integer "total_rent",     default: 0
+    t.integer "person_council_rent",    default: 0
+    t.integer "person_other_rent",      default: 0
+    t.integer "person_total_rent",      default: 0
     t.string  "electoral_code"
-    t.integer "households",     default: 0
+    t.integer "household_council_rent"
+    t.integer "household_other_rent"
+    t.integer "household_total_rent"
   end
 
 end
