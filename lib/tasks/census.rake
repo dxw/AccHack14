@@ -4,7 +4,7 @@ require 'csv'
 
 namespace :fetch do
   desc "Fetch all social housing figures"
-  task :social_housing => :environment do
+  task :used_social_housing => :environment do
     SocialHousing.delete_all
     conn = connection(url)
 
@@ -17,8 +17,8 @@ namespace :fetch do
     end
   end
 
-  desc "Fetch all populations for an authority"
-  task :population => :environment do
+  desc "Fetch total social housing for an authority area"
+  task :all_social_housing => :environment do
     conn = connection(url)
     @local_authorities.each do |local_authority|
 
@@ -66,10 +66,10 @@ def construct_social_housing(auth, json)
   key_array = dimension["CL_0000073"]["category"]["index"]
 
   SocialHousing.create(Hash[
-    rent: values[key_array["CI_0000069"].to_s],
-    other: values[key_array["CI_0000068"].to_s],
-    total: values[key_array["CI_0000115"].to_s],
-    electoral_authority: auth
+    council_rent: values[key_array["CI_0000069"].to_s],
+    other_rent: values[key_array["CI_0000068"].to_s],
+    total_rent: values[key_array["CI_0000115"].to_s],
+    electoral_code: auth
   ])
 end
 
