@@ -4,6 +4,7 @@ class CreateSocialHousings < ActiveRecord::Migration
       t.integer :rent, default: 0
       t.integer :other, default: 0
       t.integer :total, default: 0
+      t.string :electoral_authority
     end
   end
 end

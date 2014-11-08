@@ -6,11 +6,24 @@ namespace :load_data do
   namespace :social_housing do
     desc "Fetch all social housing figures"
     task :fetch_all => :environment do
+      SocialHousing.delete_all
+
       electoral_authorities.each do |electoral_authority|
         conn = connection(url)
-        params.merge!(Hash["dm/2011HTWARDH", electoral_authority])
+        params.merge!(Hash["dm/2011STATH", electoral_authority])
         response = conn.get("#{url}/#{data_set}.json", params)
-        response.body
+        json = JSON.parse(response.body)
+
+        values = json["QS403EW"]["value"]
+        dimension = json["QS403EW"]["dimension"]
+        key_array = dimension["CL_0000073"]["category"]["index"]
+
+        SocialHousing.create(Hash[
+          rent: values[key_array["CI_0000069"].to_s],
+          other: values[key_array["CI_0000068"].to_s],
+          total: values[key_array["CI_0000115"].to_s],
+          electoral_authority: electoral_authority
+        ])
       end
     end
   end
@@ -25,14 +38,14 @@ def api_key
 end
 
 def data_set
-  @data_set ||= "DC4101EW" # Tenure by household composition
+  @data_set ||= "QS403EW" # Tenure by people
 end
 
 def params
   @params ||= Hash[
     'apikey', api_key,
     'context', 'Census', # We're looking at the census data
-    'geog', '2011HTWARDH', # Using the 2011 Administrative Hieracry
+    'geog', '2011STATH', # Using the 2011 Administrative Hieracry
     'totals', 'false', # We're only looking at one area so we don't care about totals
     'jsontype', 'json-stat'
   ]

@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(version: 20141108171856) do
   end
 
   create_table "social_housings", force: true do |t|
-    t.integer "rent",  default: 0
-    t.integer "other", default: 0
-    t.integer "total", default: 0
+    t.integer "rent",                default: 0
+    t.integer "other",               default: 0
+    t.integer "total",               default: 0
+    t.string  "electoral_authority"
   end
 
 end
