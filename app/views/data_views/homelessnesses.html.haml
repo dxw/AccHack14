@@ -1,0 +1,19 @@
+%table
+  %tr
+    %th Local Authority
+    %th 1) Eligible unintentionally homeless and in priority need
+    %th 2) Eligible, homeless and in priority need but intentionally so
+    %th 3) Eligible, homeless but not in priority need
+    %th 4) Eligible, but not homeless
+    %th 5) Ineligible households
+    %th total
+
+  - @homelessnesses.each do |h|
+    %tr
+      %td=h.local_authority.name
+      %td=h.type_1
+      %td=h.type_2
+      %td=h.type_3
+      %td=h.type_4
+      %td=h.type_5
+      %td=h.total

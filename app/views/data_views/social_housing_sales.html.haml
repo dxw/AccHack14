@@ -1,0 +1,8 @@
+%table
+  %tr
+    %th Local authority
+    %th Social Housing Sales in 2011-12
+  - @social_housing_sales.each do |shs|
+    %tr
+      %td=shs.local_authority.name
+      %td=shs.sales
