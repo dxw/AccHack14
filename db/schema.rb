@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108174723) do
+ActiveRecord::Schema.define(version: 20141108205959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,10 +39,11 @@ ActiveRecord::Schema.define(version: 20141108174723) do
   end
 
   create_table "social_housings", force: true do |t|
-    t.integer "rent",                default: 0
-    t.integer "other",               default: 0
-    t.integer "total",               default: 0
-    t.string  "electoral_authority"
+    t.integer "rent",           default: 0
+    t.integer "other",          default: 0
+    t.integer "total",          default: 0
+    t.string  "electoral_code"
+    t.boolean "occupied",       default: false
   end
 
 end

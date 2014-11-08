@@ -10,10 +10,18 @@ namespace :fetch do
 
     electoral_authorities.each do |electoral_authority|
       params.merge!(Hash["dm/2011STATH", electoral_authority])
-      response = conn.get("#{url}/#{data_set}.json", params)
+      response = conn.get("#{url}/#{tenure_data_set}.json", params)
       json = JSON.parse(response.body)
 
       construct_social_housing(electoral_authority, json)
+    end
+  end
+
+  desc "Fetch all populations for an authority"
+  task :population => :environment do
+    conn = connection(url)
+    @local_authorities.each do |local_authority|
+
     end
   end
 end
@@ -24,10 +32,6 @@ end
 
 def api_key
   @api_key ||= "kEpQD83eRd"
-end
-
-def data_set
-  @data_set ||= "QS403EW" # Tenure by people
 end
 
 def params
@@ -46,6 +50,27 @@ def connection(url)
     con.response :logger
     con.adapter Faraday.default_adapter
   end
+end
+
+def local_authorities
+  @local_authorities ||= LocalAuthority.all
+end
+
+def tenure_data_set
+  @tenure_data_set ||= "QS403EW"
+end
+
+def construct_social_housing(auth, json)
+  values = json["QS403EW"]["value"]
+  dimension = json["QS403EW"]["dimension"]
+  key_array = dimension["CL_0000073"]["category"]["index"]
+
+  SocialHousing.create(Hash[
+    rent: values[key_array["CI_0000069"].to_s],
+    other: values[key_array["CI_0000068"].to_s],
+    total: values[key_array["CI_0000115"].to_s],
+    electoral_authority: auth
+  ])
 end
 
 def electoral_authorities
@@ -68,17 +93,4 @@ def electoral_authorities
     "E07000081", "E06000053", "E07000187", "E07000042", "E07000043", "E07000050", "E06000024", "E06000026", "E06000029", "E07000051", "E07000188", "E06000025", "E07000044", "E07000189", "E07000082", "E06000030", "E07000190", "E07000045", "E07000083", "E06000027",
     "E07000046", "E07000047", "E07000052", "E07000191", "E07000053", "E06000054"
   ]
-end
-
-def construct_social_housing(auth, json)
-  values = json["QS403EW"]["value"]
-  dimension = json["QS403EW"]["dimension"]
-  key_array = dimension["CL_0000073"]["category"]["index"]
-
-  SocialHousing.create(Hash[
-    rent: values[key_array["CI_0000069"].to_s],
-    other: values[key_array["CI_0000068"].to_s],
-    total: values[key_array["CI_0000115"].to_s],
-    electoral_authority: auth
-  ])
 end
