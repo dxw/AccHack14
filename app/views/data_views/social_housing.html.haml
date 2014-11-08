@@ -1,0 +1,13 @@
+%table
+  %tr
+    %th Authority
+    %th Rent
+    %th Other
+    %th Total
+  - @social_housings.each do |social_housing|
+    %tr
+      %td= social_housing.electoral_authority
+      %td= social_housing.rent
+      %td= social_housing.other
+      %td= social_housing.total
+
