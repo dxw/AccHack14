@@ -4,13 +4,13 @@ require 'csv'
 
 namespace :fetch do
   desc "Fetch all social housing figures"
-  task :used_social_housing => :environment do
+  task :social_housing_people => :environment do
     SocialHousing.delete_all
     conn = connection(url)
 
     electoral_authorities.each do |electoral_authority|
       params.merge!(Hash["dm/2011STATH", electoral_authority])
-      response = conn.get("#{url}/#{tenure_data_set}.json", params)
+      response = conn.get("#{url}/#{tenure_person_data_set}.json", params)
       json = JSON.parse(response.body)
 
       construct_social_housing(electoral_authority, json)
@@ -18,10 +18,23 @@ namespace :fetch do
   end
 
   desc "Fetch total social housing for an authority area"
-  task :all_social_housing => :environment do
+  task :social_housing_households => :environment do
     conn = connection(url)
-    @local_authorities.each do |local_authority|
 
+    electoral_authorities.each do |electoral_authority|
+      params.merge!(Hash["dm/2011STATH", electoral_authority])
+      response = conn.get("#{url}/#{tenure_household_data_set}.json", params)
+      json = JSON.parse(response.body)
+
+      values = json[tenure_household_data_set]["value"]
+      dimension = json[tenure_household_data_set]["dimension"]
+      key_array = dimension["CL_0000073"]["category"]["index"]
+
+      social_rented_total = values[key_array["CI_0000115"].to_s]
+
+      social_housing = SocialHousing.find_by_electoral_code(electoral_authority)
+      social_housing.households = social_rented_total
+      social_housing.save
     end
   end
 end
@@ -56,13 +69,21 @@ def local_authorities
   @local_authorities ||= LocalAuthority.all
 end
 
-def tenure_data_set
-  @tenure_data_set ||= "QS403EW"
+def social_housing
+  @social_housing ||= SocialHousing.all
+end
+
+def tenure_person_data_set
+  @tenure_person_data_set ||= "QS403EW"
+end
+
+def tenure_household_data_set
+  @tenure_household_data_set ||= "QS405EW"
 end
 
 def construct_social_housing(auth, json)
-  values = json["QS403EW"]["value"]
-  dimension = json["QS403EW"]["dimension"]
+  values = json[tenure_person_data_set]["value"]
+  dimension = json[tenure_person_data_set]["dimension"]
   key_array = dimension["CL_0000073"]["category"]["index"]
 
   SocialHousing.create(Hash[
