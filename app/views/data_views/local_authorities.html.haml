@@ -1,0 +1,9 @@
+%table
+  %tr
+    %th LA code
+    %th Name
+  - @local_authorities.each do |la|
+    %tr
+      %td=la.la_code
+      %td=la.name
+
