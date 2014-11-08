@@ -1,1 +1,9 @@
-welcome
+Enter the name of a local authority:
+
+= form_tag "local_authorities", method: 'get' do
+  .row.collapse
+    .large-8.small-9.columns
+      =collection_select(:local_authority, :id, @local_authorities, :la_code, :name, prompt: true)
+
+    .large-4.small-3.columns
+      =submit_tag "Search", class: "button postfix", name: nil

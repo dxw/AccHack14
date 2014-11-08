@@ -14,6 +14,7 @@ gem 'haml-rails'
 gem 'thin'
 gem 'pg'
 gem 'faraday'
+gem "select2-rails"
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
