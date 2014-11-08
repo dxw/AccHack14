@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108154326) do
+ActiveRecord::Schema.define(version: 20141108171856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 20141108154326) do
   create_table "local_authorities", force: true do |t|
     t.string "la_code"
     t.string "name"
+  end
+
+  create_table "social_housings", force: true do |t|
+    t.integer "rent",  default: 0
+    t.integer "other", default: 0
+    t.integer "total", default: 0
   end
 
 end
