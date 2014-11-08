@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141108211400) do
   create_table "local_authorities", force: true do |t|
     t.string "la_code"
     t.string "name"
+    t.string "electoral_code"
   end
 
   create_table "social_housing_sales", force: true do |t|
