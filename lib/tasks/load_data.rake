@@ -52,3 +52,12 @@ namespace :load_data do
     puts "There are now #{SocialHousingSale.count} social housing sale records in the database"
   end
 end
+
+task add_la_to_soc: :environment do
+  SocialHousing.all.each do |sh|
+    local_authority = LocalAuthority.find_by_electoral_code(sh.electoral_code)
+    sh.update(local_authority_id: local_authority.id)
+    print "."
+  end
+  puts ""
+end
