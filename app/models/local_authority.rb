@@ -34,7 +34,7 @@ class LocalAuthority < ActiveRecord::Base
     number_of_homeless + number_social_housing
   end
   def percentage_need
-    return nil if need.nil?;
+    return nil if need.nil?
     need*100.0/total_households
   end
 
