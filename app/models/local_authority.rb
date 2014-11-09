@@ -29,6 +29,17 @@ class LocalAuthority < ActiveRecord::Base
     houses_sold*100.0/total_households
   end
 
+  def need
+    return nil if number_of_homeless.nil? || number_social_housing.nil?
+    number_of_homeless + number_social_housing
+  end
+  def percentage_need
+    return nil if need.nil?;
+    need*100.0/total_households
+  end
+
+
+
 
   def self.average_social_housing_household_percentage
     return 0 if has_social_housing_data.count == 0
@@ -45,6 +56,11 @@ class LocalAuthority < ActiveRecord::Base
     sum = has_sold_data.sum(&:houses_sold)
     sum.to_f/has_sold_data.count
   end
+  def self.average_need
+    return 0 if has_need_data.count == 0
+    sum = has_need_data.sum(&:percentage_need)
+    sum.to_f/has_need_data.count
+  end
 
   def self.has_homeless_data
     @has_homeless_data ||= all.select{ |la| la.percentage_homeless.present? }
@@ -54,5 +70,9 @@ class LocalAuthority < ActiveRecord::Base
   end
   def self.has_sold_data
     @has_sold_data ||= all.select{ |la| la.houses_sold.present? }
+  end
+
+  def self.has_need_data
+    @has_need_data ||= all.select{ |la| la.need.present? }
   end
 end
