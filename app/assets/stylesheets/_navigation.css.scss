@@ -22,32 +22,4 @@
       }
     }
   }
-  ul {
-    margin: $space-large/3 0 0 0;
-    list-style: none;
-
-    li {
-      display: inline-block;
-      margin-left: $space-small*2;
-    }
-
-    a {
-      background: darken($primary-color, 15);
-      padding: $space-small $space-medium;
-      color: $white;
-
-      &:hover, &:focus {
-        background: darken($primary-color, 20);
-      }
-
-      &.active {
-        background: $white;
-        color: $primary-color;
-
-        &:hover, &:focus {
-          color: darken($primary-color, 20);
-        }
-      }
-    }
-  }
 }

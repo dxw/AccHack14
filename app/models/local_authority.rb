@@ -26,7 +26,7 @@ class LocalAuthority < ActiveRecord::Base
   end
   def percentage_houses_sold
     return if houses_sold.nil?
-    houses_sold*100.0/total_households
+    houses_sold*100.0/number_social_housing
   end
 
   def need
@@ -35,7 +35,7 @@ class LocalAuthority < ActiveRecord::Base
   end
   def percentage_need
     return nil if need.nil?
-    need*100.0/total_households
+    number_social_housing*100.0/need
   end
 
 

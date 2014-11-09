@@ -4,9 +4,18 @@
   }
 
   .average, .compare {
+    width: 100%;
     font-size: rem-calc(16);
     line-height: rem-calc(16);
     margin-bottom: 5px;
+
+    h2 {
+      font-size: rem-calc(20);
+      color: gray;
+      font-weight: 300;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
 
     .line {
       display: inline-block;
@@ -36,7 +45,7 @@
 
   .compare {
     .line {
-      border-top: 8px solid $primary-color;
+      border-top: 8px solid $info-color;
     }
   }
 
@@ -82,22 +91,36 @@
   .type {
     font-size: rem-calc(35);
     line-height: rem-calc(40);
-    margin-bottom: 20px;
   }
 
   .house-scale {
-    font-weight: 600;
-    color: $primary-color;
+    font-size: rem-calc(105);
+    line-height: rem-calc(115);
+    &.color {
+      color: $info-color;
+      font-weight: 600;
+    }
   }
 
   &.sm {
-    font-size: rem-calc(80);
-    line-height: rem-calc(85);
-
     .type {
-      font-size: rem-calc(25);
-      line-height: rem-calc(30);
-      padding-bottom: $space-small;
+      padding-bottom: $space-small*4;
     }
+    .compare,
+    .average {
+      dl {
+        dt {
+          width: 35%;
+        }
+        dd {
+          width: 65%;
+        }
+      }
+    }
+  }
+
+  em {
+    font-weight: 300;
+    color: silver;
   }
 }

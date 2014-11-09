@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def try(value)
-    value || no_data
+    number_with_delimiter(value) || no_data
   end
 
   def no_data

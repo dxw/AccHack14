@@ -6,15 +6,10 @@ a {
   transition: all 0.3s ease-out;
 }
 
-@mixin rgba-background($color){
-  @include filter-gradient($color, $color);
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 or $legacy-support-for-ie8 {
-    background: transparent;
+hr {
+  margin: $space-medium*2 0;
+}
 
-    // set filter as none for IE9+, because IE9+ supprot RGBa
-    :root & {
-      filter: none\0/IE9;
-    }
-  }
-  background: $color;
+em {
+  font-style: normal;
 }
