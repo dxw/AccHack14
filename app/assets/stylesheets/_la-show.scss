@@ -4,6 +4,7 @@
   }
 
   .average, .compare {
+    width: 100%;
     font-size: rem-calc(16);
     line-height: rem-calc(16);
     margin-bottom: 5px;
@@ -85,18 +86,17 @@
   }
 
   .house-scale {
-    font-weight: 600;
-    color: $primary-color;
+    font-size: rem-calc(105);
+    line-height: rem-calc(115);
+    &.color {
+      color: $info-color;
+      font-weight: 600;
+    }
   }
 
   &.sm {
-    font-size: rem-calc(80);
-    line-height: rem-calc(85);
-
     .type {
-      font-size: rem-calc(25);
-      line-height: rem-calc(30);
-      padding-bottom: $space-small;
+      padding-bottom: $space-small*4;
     }
   }
 }
