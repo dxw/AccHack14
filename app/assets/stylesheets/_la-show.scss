@@ -10,37 +10,63 @@
 }
 
 .stat {
-  @extend .large-5;
+  @extend .large-6;
   @extend .columns;
-  font-size: rem-calc(110);
-  line-height: rem-calc(110);
+  font-size: rem-calc(125);
+  line-height: rem-calc(130);
   margin-bottom: 20px;
+  font-weight: 300;
 
   .type {
-    font-size: rem-calc(30);
-    line-height: rem-calc(30);
+    font-size: rem-calc(35);
+    line-height: rem-calc(40);
     margin-bottom: 20px;
   }
 
   &.sm {
-    font-size: rem-calc(70);
-    line-height: rem-calc(70);
+    font-size: rem-calc(80);
+    line-height: rem-calc(85);
 
     .type {
-      font-size: rem-calc(20);
-      line-height: rem-calc(20);
+      font-size: rem-calc(25);
+      line-height: rem-calc(30);
+      padding-bottom: 25px;
+      border-bottom: 1px solid #dddddd;
     }
   }
 
   .average, .compare {
     font-size: rem-calc(16);
     line-height: rem-calc(16);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 
     .line {
       display: inline-block;
       width: 100%;
+      border-top: 8px solid gray;
+    }
+  }
+
+  .compare {
+    .line {
       border-top: 8px solid $primary-color;
+    }
+  }
+
+  dl {
+    @extend .row;
+
+    dt {
+      @extend .large-3;
+      @extend .columns;
+      font-size: rem-calc(14);
+      padding-right: 0;
+      padding-top: 5px;
+    }
+    dd {
+      @extend .large-9;
+      @extend .columns;
+      margin-bottom: 0;
     }
   }
 }

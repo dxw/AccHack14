@@ -1,4 +1,4 @@
-@import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700|Oswald:400,300,700");
 @import url("//fonts.googleapis.com/css?family=Chelsea+Market");
 
 @font-face {
@@ -33,7 +33,6 @@
   width: 1em;
   margin-right: .2em;
   text-align: center;
-  -webkit-font-smoothing: antialiased;
 
   /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
@@ -58,3 +57,7 @@
 .icon-home-1:before { content: '\e802'; }
 .icon-home-2:before { content: '\e803'; }
 .icon-search-1:before { content: '\e805'; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+}

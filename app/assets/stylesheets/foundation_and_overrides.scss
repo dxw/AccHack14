@@ -87,8 +87,9 @@ $column-gutter: rem-calc(30);
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // We use these to define default font stacks
-$font-family-logo: "Chelsea Market", cursive;
-$font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$font-family-logo: "Oswald", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$font-family-sans-serif: "Oswald", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$font-family-body: "Open Sans", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
@@ -97,7 +98,7 @@ $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
 
 // We use these as default colors throughout
-$primary-color: #446CB3; // San Marino blue http://www.flatuicolorpicker.com/
+$primary-color: #0F7D7E; // San Marino blue http://www.flatuicolorpicker.com/
 $secondary-color: #6C7A89; // Lynch grey http://www.flatuicolorpicker.com/
 $alert-color: #D91E18; // Thunderbird red http://www.flatuicolorpicker.com/
 $success-color: #26A65B; // Eucalyptus green http://www.flatuicolorpicker.com/
