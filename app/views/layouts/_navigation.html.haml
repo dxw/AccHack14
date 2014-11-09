@@ -4,7 +4,9 @@
   .row
     .large-12.columns
       %h1.left
-        = link_to 'Right to Buy-Bye', root_path
+        = link_to root_path do
+          Right to
+          %span Buy-Bye
       %ul.right
         %li
           = link_to 'Home', root_path, class: cp(root_path)
