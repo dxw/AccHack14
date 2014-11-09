@@ -3,8 +3,7 @@
     %h1=@local_authority.name
 
   %section.row
-    .house
-      House icon
+    .house{:class => "icon-home-1"}
     .stat
       =@households
       .type
@@ -12,6 +11,8 @@
         =@local_authority.name
 
   %section.row
+    .large-12.columns
+      %hr
     .stat.social.sm
       =@social_housing
       .type
@@ -49,6 +50,8 @@
 
   %section.need-fulfilled
     .row
+      .large-12.columns
+        %hr
       .stat
         .house-scale
           85
