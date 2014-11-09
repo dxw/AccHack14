@@ -53,7 +53,8 @@ namespace :load_data do
   end
 end
 
-task add_la_to_soc: :environment do
+desc "add_la_to_soc"
+task :add_la_to_soc => :environment do
   SocialHousing.all.each do |sh|
     local_authority = LocalAuthority.find_by_electoral_code(sh.electoral_code)
     sh.update(local_authority_id: local_authority.id)
