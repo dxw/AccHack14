@@ -22,6 +22,7 @@
           %dt=@local_authority.name
           %dd
             .line{ data: { percentage: @local_authority_percentage_households } }
+            .line-full
             %span=try_percentage(@local_authority_percentage_households)
 
       .average
@@ -29,6 +30,7 @@
           %dt National average
           %dd
             .line{ data: { percentage: @social_housing_average_households } }
+            .line-full
             %span=try_percentage(@social_housing_average_households)
 
     .stat.homeless.sm
@@ -40,19 +42,21 @@
           %dt=@local_authority.name
           %dd
             .line{ data: { percentage: @local_authority_percentage_homeless } }
+            .line-full
             %span=try_percentage(@local_authority_percentage_homeless)
       .average
         %dl
           %dt National average
           %dd
             .line{ data: { percentage: @homeless_average } }
+            .line-full
             %span=try_percentage(@homeless_average)
 
   %section.need-fulfilled
     .row
       .large-12.columns
         %hr
-      .stat
+      .stat.large-4.columns
         .house-scale
           85
         .type
@@ -69,12 +73,14 @@
             %dt=@local_authority.name
             %dd
               .line{ data: { percentage: @local_authority_houses_sold } }
+              .line-full
               %span=try_percentage(@local_authority_houses_sold)
         .average
           %dl
             %dt National average
             %dd
               .line{ data: { percentage: @houses_sold_average } }
+              .line-full
               %span=try_percentage(@houses_sold_average)
 
   %section.row
@@ -87,6 +93,7 @@
           %dt=@local_authority.name
           %dd
             .line{ data: { percentage: @local_authority_houses_sold } }
+            .line-full
             %span=try_percentage(@local_authority_houses_sold)
 
       .average
@@ -94,4 +101,5 @@
           %dt National average
           %dd
             .line{ data: { percentage: @homeless_average } }
+            .line-full
             %span=try_percentage(@homeless_average)
