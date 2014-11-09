@@ -1,3 +1,13 @@
 footer {
+  border-top: 1px solid $gainsboro;
+  background: $smoke;
+  padding-top: $space-medium*2;
   font-family: $font-family-body;
+  .button {
+    background: $twitter;
+    padding: $space-small*2;
+    &:hover, &:focus {
+      background: darken($twitter, 5);
+    }
+  }
 }
