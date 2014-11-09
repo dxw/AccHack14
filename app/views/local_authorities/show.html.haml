@@ -20,14 +20,15 @@
         %dl
           %dt=@local_authority.name
           %dd
-            .line
-            %span=number_to_percentage(@local_authority_percentage_households, precision: 2)
+            .line{ data: { percentage: @local_authority_percentage_households } }
+            %span=try_percentage(@local_authority_percentage_households)
+
       .average
         %dl
           %dt National average
           %dd
-            .line
-            %span=number_to_percentage(@social_housing_average_households, precision: 2)
+            .line{ data: { percentage: @social_housing_average_households } }
+            %span=try_percentage(@social_housing_average_households)
 
     .stat.homeless.sm
       74
@@ -37,14 +38,14 @@
         %dl
           %dt=@local_authority.name
           %dd
-            .line
-            %span=number_to_percentage(@local_authority_percentage_homeless, precision: 2)
+            .line{ data: { percentage: @local_authority_percentage_homeless } }
+            %span=try_percentage(@local_authority_percentage_homeless)
       .average
         %dl
           %dt National average
           %dd
-            .line
-            %span=number_to_percentage(@homeless_average)
+            .line{ data: { percentage: @homeless_average } }
+            %span=try_percentage(@homeless_average)
 
   %section.need-fulfilled
     .row
@@ -64,14 +65,14 @@
           %dl
             %dt=@local_authority.name
             %dd
-              .line
-              %span=number_to_percentage(@local_authority_houses_sold)
+              .line{ data: { percentage: @local_authority_houses_sold } }
+              %span=try_percentage(@local_authority_houses_sold)
         .average
           %dl
             %dt National average
             %dd
-              .line
-              %span=number_to_percentage(@houses_sold_average)
+              .line{ data: { percentage: @houses_sold_average } }
+              %span=try_percentage(@houses_sold_average)
 
   %section.row
     .stat.sold.sm
@@ -82,11 +83,12 @@
         %dl
           %dt=@local_authority.name
           %dd
-            .line
-            %span=number_to_percentage(@local_authority_houses_sold)
+            .line{ data: { percentage: @local_authority_houses_sold } }
+            %span=try_percentage(@local_authority_houses_sold)
+
       .average
         %dl
           %dt National average
           %dd
-            .line
-            %span=number_to_percentage(@homeless_average, precision: 2)
+            .line{ data: { percentage: @homeless_average } }
+            %span=try_percentage(@homeless_average)

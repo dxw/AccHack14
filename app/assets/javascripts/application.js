@@ -18,6 +18,12 @@
 $(function() {$(document).foundation();});
 
 $(document).ready(function() {
-  // DO SOME STUFF
+
+  $(".line").each(function( index ) {
+    var value = Math.ceil($(this).data("percentage"))
+    var percentage = value + "%"
+
+    $(this).css('width', percentage)
+  });
 });
 
