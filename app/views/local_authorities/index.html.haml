@@ -1,15 +1,11 @@
-%table
-  %tr
-    %th LA code
-    %th Electoral code
-    %th Name
-    %th Households
+%form{:class => "form-search"}
+  %fieldset
+    %input{:type => "text", :id => "search", :placeholder => "Search for local authority"}
+    %button{:type => "submit", :class => "icon-search-1"}
 
+%h2
+  Local authorities
+
+%ul{:class => "small-block-grid-2 large-block-grid-3 authorities"}
   - @local_authorities.each do |la|
-    %tr
-      %td=la.la_code
-      %td=la.electoral_code
-      %td=la.name
-      %td=la.total_households
-
-
+    %li= link_to la.name , local_authority_path(la.la_code)
