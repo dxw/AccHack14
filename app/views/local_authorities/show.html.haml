@@ -22,6 +22,7 @@
           %dt=@local_authority.name
           %dd
             .line{ data: { percentage: @local_authority_percentage_households } }
+            .line-full
             %span=try_percentage(@local_authority_percentage_households)
 
       .average
@@ -29,10 +30,11 @@
           %dt National average
           %dd
             .line{ data: { percentage: @social_housing_average_households } }
+            .line-full
             %span=try_percentage(@social_housing_average_households)
 
     .stat.homeless.sm
-      74
+      = @number_of_homeless
       .type
         Homeless households
       .compare
@@ -40,26 +42,28 @@
           %dt=@local_authority.name
           %dd
             .line{ data: { percentage: @local_authority_percentage_homeless } }
+            .line-full
             %span=try_percentage(@local_authority_percentage_homeless)
       .average
         %dl
           %dt National average
           %dd
             .line{ data: { percentage: @homeless_average } }
+            .line-full
             %span=try_percentage(@homeless_average)
 
   %section.need-fulfilled
     .row
       .large-12.columns
         %hr
-      .stat
+      .stat.large-4.columns
         .house-scale
-          85
+          =@total_need
         .type
           Households in need of social housing
       .stat
         .house-scale
-          30
+          =@social_housing
         .type
           Houses available
     .row
@@ -68,14 +72,16 @@
           %dl
             %dt=@local_authority.name
             %dd
-              .line{ data: { percentage: @local_authority_houses_sold } }
-              %span=try_percentage(@local_authority_houses_sold)
+              .line{ data: { percentage: @local_authority_percentage_need } }
+              .line-full
+              %span=try_percentage(@local_authority_percentage_need)
         .average
           %dl
             %dt National average
             %dd
-              .line{ data: { percentage: @houses_sold_average } }
-              %span=try_percentage(@houses_sold_average)
+              .line{ data: { percentage: @need_average } }
+              .line-full
+              %span=try_percentage(@need_average)
 
   %section.row
     .large-12.columns
@@ -89,6 +95,7 @@
           %dt=@local_authority.name
           %dd
             .line{ data: { percentage: @local_authority_percentage_houses_sold } }
+            .line-full
             %span=try_percentage(@local_authority_percentage_houses_sold)
 
       .average
@@ -96,4 +103,5 @@
           %dt National average
           %dd
             .line{ data: { percentage: @houses_sold_average } }
+            .line-full
             %span=try_percentage(@houses_sold_average)
