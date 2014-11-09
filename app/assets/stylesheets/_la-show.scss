@@ -17,7 +17,7 @@
 
   .compare {
     .line {
-      border-top: 8px solid $primary-color;
+      border-top: 8px solid $info-color;
     }
   }
 
@@ -62,7 +62,6 @@
   .type {
     font-size: rem-calc(35);
     line-height: rem-calc(40);
-    margin-bottom: 20px;
   }
 
   .house-scale {
