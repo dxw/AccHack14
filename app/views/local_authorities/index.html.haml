@@ -1,11 +1,11 @@
-%form{:class => "form-search"}
-  %fieldset
-    %input{:type => "text", :id => "search", :placeholder => "Search for local authority", :autofocus => "autofocus"}
-    %button{:type => "submit", :class => "icon-search-1"}
+/ %form{:class => "form-search"}
+/   %fieldset
+/     %input{:type => "text", :id => "search", :placeholder => "Search for local authority", :autofocus => "autofocus"}
+/     %button{:type => "submit", :class => "icon-search-1"}
 
 %h2
   Local authorities
 
-%ul{:class => "small-block-grid-2 large-block-grid-3 authorities"}
+%ul.sieve{:class => "small-block-grid-2 large-block-grid-3 authorities"}
   - @local_authorities.each do |la|
     %li= link_to la.name , local_authority_path(la.la_code)

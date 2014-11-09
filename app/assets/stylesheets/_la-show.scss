@@ -98,5 +98,16 @@
     .type {
       padding-bottom: $space-small*4;
     }
+    .compare,
+    .average {
+      dl {
+        dt {
+          width: 35%;
+        }
+        dd {
+          width: 65%;
+        }
+      }
+    }
   }
 }

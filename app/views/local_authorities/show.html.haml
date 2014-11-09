@@ -5,7 +5,7 @@
   %section.row
     .house{:class => "icon-home-1"}
     .stat
-      =@households
+      = try(@households)
       .type
         Households in
         =@local_authority.name
@@ -14,7 +14,7 @@
     .large-12.columns
       %hr
     .stat.social.sm
-      =@social_housing
+      = try(@social_housing)
       .type
         Social housing households
       .compare
@@ -34,7 +34,7 @@
             %span=try_percentage(@social_housing_average_households)
 
     .stat.homeless.sm
-      = @number_of_homeless
+      = try(@number_of_homeless)
       .type
         Homeless households
       .compare

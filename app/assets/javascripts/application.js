@@ -13,10 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require sieve
 //= require_tree .
+
 $(function() {$(document).foundation();});
 
 $(document).ready(function() {
+  $("ul.sieve").sieve({ itemSelector: "li" });
 
   $(".line").each(function( index ) {
     var value = Math.ceil($(this).data("percentage"))

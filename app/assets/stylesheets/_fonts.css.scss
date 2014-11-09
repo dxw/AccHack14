@@ -57,7 +57,7 @@
 .icon-home-1:before { content: '\e802'; }
 .icon-home-2:before { content: '\e803'; }
 .icon-twitter:before { content: '\e804'; }
-.icon-search-1:before { content: '\e805'; }
+.icon-search-1:before { content: '\e805'; position: relative; top: -3px; }
 .icon-home-3:before { content: '\e806'; }
 
 html {
