@@ -3,9 +3,13 @@
     %th LA code
     %th Electoral code
     %th Name
+    %th Households
+
   - @local_authorities.each do |la|
     %tr
       %td=la.la_code
       %td=la.electoral_code
       %td=la.name
+      %td=la.total_households
+
 

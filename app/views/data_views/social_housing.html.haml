@@ -1,13 +1,19 @@
 %table
   %tr
     %th Authority
-    %th Rent
-    %th Other
-    %th Total
+    %th Person council rent
+    %th Person other rent
+    %th Person total rent
+    %th Household council rent
+    %th Household other rent
+    %th Household total rent
   - @social_housings.each do |social_housing|
     %tr
-      %td= social_housing.electoral_authority
-      %td= social_housing.rent
-      %td= social_housing.other
-      %td= social_housing.total
+      %td= social_housing.electoral_code
+      %td= social_housing.person_council_rent
+      %td= social_housing.person_other_rent
+      %td= social_housing.person_total_rent
+      %td= social_housing.household_council_rent
+      %td= social_housing.household_other_rent
+      %td= social_housing.household_total_rent
 
