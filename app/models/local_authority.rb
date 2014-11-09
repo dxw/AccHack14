@@ -53,7 +53,7 @@ class LocalAuthority < ActiveRecord::Base
   end
   def self.average_houses_sold
     return 0 if has_sold_data.count == 0
-    sum = has_sold_data.sum(&:houses_sold)
+    sum = has_sold_data.sum(&:percentage_houses_sold)
     sum.to_f/has_sold_data.count
   end
   def self.average_need
@@ -69,10 +69,10 @@ class LocalAuthority < ActiveRecord::Base
     @has_social_housing_data ||= all.select{ |la| la.percentage_social_housing.present? }
   end
   def self.has_sold_data
-    @has_sold_data ||= all.select{ |la| la.houses_sold.present? }
+    @has_sold_data ||= all.select{ |la| la.percentage_houses_sold.present? }
   end
 
   def self.has_need_data
-    @has_need_data ||= all.select{ |la| la.need.present? }
+    @has_need_data ||= all.select{ |la| la.percentage_need.present? }
   end
 end
