@@ -19,13 +19,23 @@
 $(function() {$(document).foundation();});
 
 $(document).ready(function() {
-  $("ul.sieve").sieve({ itemSelector: "li" });
+  $("ul.sieve").sieve({
+    itemSelector: "li",
+    complete: function (){
+      var visible = $('.sieve>li:visible').size();
+      if(visible){
+        $(".noresults").hide();
+      } else {
+        $(".noresults").show();
+      }
+    }
+  });
 
   $(".line").each(function( index ) {
-    var value = Math.ceil($(this).data("percentage"))
-    var percentage = value + "%"
+    var value = Math.ceil($(this).data("percentage"));
+    var percentage = value + "%";
 
-    $(this).css('width', percentage)
+    $(this).css('width', percentage);
   });
 });
 
