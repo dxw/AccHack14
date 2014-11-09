@@ -6,29 +6,41 @@
     .house
       House icon
     .stat
-      1257
+      =@households
       .type
         Households
 
   %section.row
     .stat.social.sm
-      300
+      =@social_housing
       .type
         Social housing households
       .average
-        .line
-        National average: 260
+        %dl
+          %dt National average
+          %dd
+            .line
+            %span=number_to_percentage(@social_housing_average_households)
       .compare
-        .line
-        Local: 300
+        %dl
+          %dt=@local_authority.name
+          %dd
+            .line
+            %span=number_to_percentage(@local_authority_percentage_households)
 
     .stat.homeless.sm
       74
       .type
         Homeless households
       .average
-        .line
-        National average: 260
+        %dl
+          %dt National average
+          %dd
+            .line
+            %span=number_to_percentage(@homeless_average)
       .compare
-        .line
-        Local: 300
+        %dl
+          %dt=@local_authority.name
+          %dd
+            .line
+            %span=number_to_percentage(@local_authority_percentage_homeless)
