@@ -1,6 +1,6 @@
 class LocalAuthoritiesController < ApplicationController
   def index
-    @local_authorities = LocalAuthority.all
+    @local_authorities = LocalAuthority.all.sort{|a,b| a.name <=> b.name}
   end
   def show
     @local_authority = LocalAuthority.find_by_la_code(params[:id])
