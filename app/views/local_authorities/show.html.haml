@@ -5,7 +5,7 @@
   %section.row
     .house{:class => "icon-home-1"}
     .stat
-      =@households
+      = try(@households)
       .type
         Households in
         =@local_authority.name
@@ -14,7 +14,7 @@
     .large-12.columns
       %hr
     .stat.social.sm
-      =@social_housing
+      = try(@social_housing)
       .type
         Social housing households
       .compare
@@ -34,7 +34,7 @@
             %span=try_percentage(@social_housing_average_households)
 
     .stat.homeless.sm
-      = @number_of_homeless
+      = try(@number_of_homeless)
       .type
         Homeless households
       .compare
@@ -58,12 +58,12 @@
         %hr
       .stat.large-4.columns
         .house-scale
-          =@total_need
+          =try(@total_need)
         .type
           Households in need of social housing
       .stat
         .house-scale
-          =@social_housing
+          =try(@social_housing)
         .type
           Houses available
     .row
@@ -85,7 +85,7 @@
 
   %section.row
     .stat.sold.sm
-      =@local_authority_houses_sold
+      = try(@local_authority_houses_sold)
       .type
         Social housing houses sold
       .compare

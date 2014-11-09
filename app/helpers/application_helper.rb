@@ -7,7 +7,15 @@ module ApplicationHelper
     if value.present?
       number_to_percentage(value, precision: 2)
     else
-      content_tag :em, "No data"
+      no_data
     end
+  end
+
+  def try(value)
+    value || no_data
+  end
+
+  def no_data
+    content_tag :em, "No data"
   end
 end

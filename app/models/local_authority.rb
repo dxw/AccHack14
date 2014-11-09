@@ -58,7 +58,7 @@ class LocalAuthority < ActiveRecord::Base
   end
   def self.average_need
     return 0 if has_need_data.count == 0
-    sum = has_need_data.sum(&:need)
+    sum = has_need_data.sum(&:percentage_need)
     sum.to_f/has_need_data.count
   end
 
