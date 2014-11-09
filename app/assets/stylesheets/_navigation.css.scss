@@ -41,11 +41,11 @@
       }
 
       &.active {
-        background: lighten($primary-color, 35);
-        color: darken($primary-color, 15);
+        background: $white;
+        color: $primary-color;
 
         &:hover, &:focus {
-          background: lighten($primary-color, 25);
+          color: darken($primary-color, 20);
         }
       }
     }

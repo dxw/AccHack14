@@ -17,7 +17,8 @@
     box-shadow: none;
     transition: none;
     color: $secondary-color;
-    font-size: 28px;
+    font-size: rem-calc(28);
+    font-weight: 300;
     &:focus {
       outline: none;
     }
@@ -30,7 +31,7 @@
     margin-bottom: 0;
     padding: 0;
     color: $secondary-color;
-    font-size: 36px;
+    font-size: rem-calc(36);
     text-align: right;
     &:focus {
       outline: none;
@@ -50,6 +51,8 @@
 ul.authorities {
   margin-top: $space-medium;
   li {
-    padding-bottom: $space-small;
+    padding-bottom: $space-small*2;
+    font-size: rem-calc(24);
+    font-weight: 300;
   }
 }

@@ -2,38 +2,6 @@
   header {
     margin-bottom: 30px;
   }
-}
-
-.house {
-  @extend .large-2;
-  @extend .columns;
-}
-
-.stat {
-  @extend .large-6;
-  @extend .columns;
-  font-size: rem-calc(125);
-  line-height: rem-calc(130);
-  margin-bottom: 20px;
-  font-weight: 300;
-
-  .type {
-    font-size: rem-calc(35);
-    line-height: rem-calc(40);
-    margin-bottom: 20px;
-  }
-
-  &.sm {
-    font-size: rem-calc(80);
-    line-height: rem-calc(85);
-
-    .type {
-      font-size: rem-calc(25);
-      line-height: rem-calc(30);
-      padding-bottom: 25px;
-      border-bottom: 1px solid #dddddd;
-    }
-  }
 
   .average, .compare {
     font-size: rem-calc(16);
@@ -67,6 +35,44 @@
       @extend .large-9;
       @extend .columns;
       margin-bottom: 0;
+    }
+  }
+}
+
+.house {
+  @extend .large-2;
+  @extend .columns;
+}
+
+.stat {
+  @extend .large-6;
+  @extend .columns;
+  font-size: rem-calc(125);
+  line-height: rem-calc(130);
+  margin-bottom: 20px;
+  font-weight: 300;
+
+  .type {
+    font-size: rem-calc(35);
+    line-height: rem-calc(40);
+    margin-bottom: 20px;
+  }
+
+  .house-scale {
+    width: 150px;
+    font-weight: 600;
+    color: $primary-color;
+  }
+
+  &.sm {
+    font-size: rem-calc(80);
+    line-height: rem-calc(85);
+
+    .type {
+      font-size: rem-calc(25);
+      line-height: rem-calc(30);
+      padding-bottom: 25px;
+      border-bottom: 1px solid #dddddd;
     }
   }
 }
