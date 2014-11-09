@@ -8,7 +8,7 @@ class LocalAuthoritiesController < ApplicationController
     @social_housing = @local_authority.number_social_housing
     @social_housing_average_households = LocalAuthority.average_social_housing_household_percentage
     @local_authority_percentage_households = @local_authority.percentage_social_housing
-    @homeless_average = 0.1
+    @homeless_average = LocalAuthority.average_homeless_percentage
     @local_authority_percentage_homeless = @local_authority.percentage_homeless
   end
 end
