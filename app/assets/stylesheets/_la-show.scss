@@ -40,12 +40,19 @@
 }
 
 .house {
-  @extend .large-2;
+  @extend .medium-2;
+  @extend .small-4;
   @extend .columns;
+  font-size: rem-calc(110);
+  line-height: rem-calc(110);
+  &:before {
+    margin: 0;
+  }
 }
 
 .stat {
-  @extend .large-6;
+  @extend .medium-6;
+  @extend .small-8;
   @extend .columns;
   font-size: rem-calc(125);
   line-height: rem-calc(130);
@@ -71,8 +78,7 @@
     .type {
       font-size: rem-calc(25);
       line-height: rem-calc(30);
-      padding-bottom: 25px;
-      border-bottom: 1px solid #dddddd;
+      padding-bottom: $space-small;
     }
   }
 }
