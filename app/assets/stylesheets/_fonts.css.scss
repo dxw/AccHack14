@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: 'acchack';
-  src: font-url('acchack.eot?68476045');
-  src: font-url('acchack.eot?68476045#iefix') format('embedded-opentype'),
-       font-url('acchack.woff?68476045') format('woff'),
-       font-url('acchack.ttf?68476045') format('truetype'),
-       font-url('acchack.svg?68476045#acchack') format('svg');
+  src: asset-url('acchack.eot?68476045');
+  src: asset-url('acchack.eot?68476045#iefix') format('embedded-opentype'),
+       asset-url('acchack.woff?68476045') format('woff'),
+       asset-url('acchack.ttf?68476045') format('truetype'),
+       asset-url('acchack.svg?68476045#acchack') format('svg');
   font-weight: normal;
   font-style: normal;
 }
