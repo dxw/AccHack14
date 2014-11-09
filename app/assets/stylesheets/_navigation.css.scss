@@ -2,34 +2,48 @@
   width: 100%;
   display: inline-block;
   background: $primary-color;
+  text-transform: uppercase;
+
   a {
     display: block;
   }
+
   h1 {
     margin: 0;
     font-family: $font-family-logo;
+    font-size: rem-calc(30);
+
     a {
       padding: $space-small*2 0;
       color: $white;
+
+      span {
+        color: darken($primary-color, 15);
+      }
     }
   }
   ul {
-    margin: $space-large/2 0 0 0;
+    margin: $space-large/3 0 0 0;
     list-style: none;
+
     li {
       display: inline-block;
       margin-left: $space-small*2;
     }
+
     a {
       background: darken($primary-color, 15);
-      padding: $space-small*2 $space-medium;
+      padding: $space-small $space-medium;
       color: $white;
+
       &:hover, &:focus {
         background: darken($primary-color, 20);
       }
+
       &.active {
         background: lighten($primary-color, 35);
         color: darken($primary-color, 15);
+
         &:hover, &:focus {
           background: lighten($primary-color, 25);
         }
