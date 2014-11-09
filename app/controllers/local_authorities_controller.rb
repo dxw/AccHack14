@@ -11,7 +11,7 @@ class LocalAuthoritiesController < ApplicationController
     @homeless_average = LocalAuthority.average_homeless_percentage
     @local_authority_percentage_homeless = @local_authority.percentage_homeless
 
-    @local_authority_houses_sold = 0.05
-    @houses_sold_average = 0.02
+    @local_authority_houses_sold = @local_authority.houses_sold
+    @houses_sold_average = LocalAuthority.average_houses_sold
   end
 end
