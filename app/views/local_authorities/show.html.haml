@@ -8,39 +8,40 @@
     .stat
       =@households
       .type
-        Households
+        Households in
+        =@local_authority.name
 
   %section.row
     .stat.social.sm
       =@social_housing
       .type
         Social housing households
-      .average
-        %dl
-          %dt National average
-          %dd
-            .line
-            %span=number_to_percentage(@social_housing_average_households)
       .compare
         %dl
           %dt=@local_authority.name
           %dd
             .line
             %span=number_to_percentage(@local_authority_percentage_households)
-
-    .stat.homeless.sm
-      74
-      .type
-        Homeless households
       .average
         %dl
           %dt National average
           %dd
             .line
-            %span=number_to_percentage(@homeless_average)
+            %span=number_to_percentage(@social_housing_average_households)
+
+    .stat.homeless.sm
+      74
+      .type
+        Homeless households
       .compare
         %dl
           %dt=@local_authority.name
           %dd
             .line
             %span=number_to_percentage(@local_authority_percentage_homeless)
+      .average
+        %dl
+          %dt National average
+          %dd
+            .line
+            %span=number_to_percentage(@homeless_average)
