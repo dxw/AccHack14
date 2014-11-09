@@ -37,6 +37,7 @@ namespace :fetch do
       key_array = dimension["CL_0000073"]["category"]["index"]
 
       social_housing = SocialHousing.find_by_electoral_code(electoral_authority)
+
       social_housing.household_council_rent = values[key_array["CI_0000069"].to_s]
       social_housing.household_other_rent = values[key_array["CI_0000068"].to_s]
       social_housing.household_total_rent = values[key_array["CI_0000115"].to_s]
@@ -116,16 +117,19 @@ def household_data_set
   @household_data_set ||= "QS113EW"
 end
 
-def construct_social_housing(auth, json)
+def construct_social_housing(electoral_code, json)
   values = json[tenure_person_data_set]["value"]
   dimension = json[tenure_person_data_set]["dimension"]
   key_array = dimension["CL_0000073"]["category"]["index"]
+
+  local_authority = LocalAuthority.find_by_electoral_code(electoral_code)
 
   SocialHousing.create(Hash[
     person_council_rent: values[key_array["CI_0000069"].to_s],
     person_other_rent: values[key_array["CI_0000068"].to_s],
     person_total_rent: values[key_array["CI_0000115"].to_s],
-    electoral_code: auth
+    electoral_code: electoral_code,
+    local_authority: local_authority,
   ])
 end
 

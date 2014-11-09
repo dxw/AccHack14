@@ -21,13 +21,13 @@
           %dt=@local_authority.name
           %dd
             .line
-            %span=number_to_percentage(@local_authority_percentage_households)
+            %span=number_to_percentage(@local_authority_percentage_households, precision: 2)
       .average
         %dl
           %dt National average
           %dd
             .line
-            %span=number_to_percentage(@social_housing_average_households)
+            %span=number_to_percentage(@social_housing_average_households, precision: 2)
 
     .stat.homeless.sm
       74
@@ -38,10 +38,10 @@
           %dt=@local_authority.name
           %dd
             .line
-            %span=number_to_percentage(@local_authority_percentage_homeless)
+            %span=number_to_percentage(@local_authority_percentage_homeless, precision: 2)
       .average
         %dl
           %dt National average
           %dd
             .line
-            %span=number_to_percentage(@homeless_average)
+            %span=number_to_percentage(@homeless_average, precision: 2)
