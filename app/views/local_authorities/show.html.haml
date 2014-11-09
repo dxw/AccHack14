@@ -60,12 +60,12 @@
         .large-8.columns
           .stat
             .house-scale
-              =@total_need
+              = try(@total_need)
             .type
               Households in need of social housing
           .stat
             .house-scale
-              =@social_housing
+              = try(@social_housing)
             .type
               Houses available
           .row
