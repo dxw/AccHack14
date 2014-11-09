@@ -49,9 +49,24 @@ namespace :fetch do
   task :total_households => :environment do
     conn = connection(url)
     params["geog"] = "2011WARDH"
-    # first_half, second_half = *electoral_authorities.each_slice(electoral_authorities.count/2).to_a
 
-    # Things have gotten very wet around here soz :'(
+   #             ___()___
+   #        _.-'' ,-'`-. ``-._
+   #     ,-'    ,'      `.    `-.
+   #   ,'     ,'          `.     `.
+   #  /      /              \      \
+   # /_     /                \     _\
+   #   ``-./_..---'''|``---.._\,-''
+   #                 |
+   #                 |
+   #                 |
+   #                 |
+   #                 |
+   #                 |
+   #                 |
+   #              ,  |
+   #              `..' Wet
+
     electoral_authorities.each do |electoral_authority|
       conn = connection(url)
 
