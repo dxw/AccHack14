@@ -56,50 +56,53 @@
     .row
       .large-12.columns
         %hr
-      .stat.large-4.columns
-        .house-scale
-          =try(@total_need)
-        .type
-          Households in need of social housing
-      .stat
-        .house-scale
-          =try(@social_housing)
-        .type
-          Houses available
-    .row
-      .columns.large-8
-        .compare
-          %dl
-            %dt=@local_authority.name
-            %dd
-              .line{ data: { percentage: @local_authority_percentage_need } }
-              .line-full
-              %span=try_percentage(@local_authority_percentage_need)
-        .average
-          %dl
-            %dt National average
-            %dd
-              .line{ data: { percentage: @need_average } }
-              .line-full
-              %span=try_percentage(@need_average)
+      .row
+        .large-8.columns
+          .stat
+            .house-scale
+              =@total_need
+            .type
+              Households in need of social housing
+          .stat
+            .house-scale
+              =@social_housing
+            .type
+              Houses available
+          .row
+            .large-12.columns
+              .stat.compare
+                %dl
+                  %dt=@local_authority.name
+                  %dd
+                    .line{ data: { percentage: @local_authority_percentage_need } }
+                    .line-full
+                    %span=try_percentage(@local_authority_percentage_need)
+              .stat.average
+                %dl
+                  %dt National average
+                  %dd
+                    .line{ data: { percentage: @need_average } }
+                    .line-full
+                    %span=try_percentage(@need_average)
 
-  %section.row
-    .stat.sold.sm
-      = try(@local_authority_houses_sold)
-      .type
-        Social housing houses sold
-      .compare
-        %dl
-          %dt=@local_authority.name
-          %dd
-            .line{ data: { percentage: @local_authority_percentage_houses_sold } }
-            .line-full
-            %span=try_percentage(@local_authority_percentage_houses_sold)
+        .stat.large-4.sold.sm
+          .house-scale.color
+            =@local_authority_houses_sold
+          .type
+            Social housing houses sold
+          .compare
+            %dl
+              %dt=@local_authority.name
+              %dd
+                .line{ data: { percentage: @local_authority_percentage_houses_sold } }
+                .line-full
+                %span=try_percentage(@local_authority_percentage_houses_sold)
 
-      .average
-        %dl
-          %dt National average
-          %dd
-            .line{ data: { percentage: @houses_sold_average } }
-            .line-full
-            %span=try_percentage(@houses_sold_average)
+          .average
+            %dl
+              %dt National average
+              %dd
+                .line{ data: { percentage: @houses_sold_average } }
+                .line-full
+                %span=try_percentage(@houses_sold_average)
+
