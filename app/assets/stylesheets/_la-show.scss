@@ -12,6 +12,25 @@
       display: inline-block;
       width: 0;
       border-top: 8px solid gray;
+      position: absolute;
+      top: 12px;
+      left: 0;
+      z-index: 100;
+    }
+
+    .line-full {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      border-top: 8px solid silver;
+      width: 100%;
+    }
+
+    span {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      font-weight: 300;
     }
   }
 
@@ -35,6 +54,7 @@
       @extend .large-9;
       @extend .columns;
       margin-bottom: 0;
+      position: relative;
     }
   }
 }
@@ -66,7 +86,6 @@
   }
 
   .house-scale {
-    width: 150px;
     font-weight: 600;
     color: $primary-color;
   }
