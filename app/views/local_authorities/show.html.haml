@@ -20,13 +20,13 @@
         %dl
           %dt=@local_authority.name
           %dd
-            .line
+            .line{ data: { percentage: @local_authority_percentage_households } }
             %span=number_to_percentage(@local_authority_percentage_households, precision: 2)
       .average
         %dl
           %dt National average
           %dd
-            .line
+            .line{ data: { percentage: @social_housing_average_households } }
             %span=number_to_percentage(@social_housing_average_households, precision: 2)
 
     .stat.homeless.sm
@@ -37,11 +37,56 @@
         %dl
           %dt=@local_authority.name
           %dd
-            .line
+            .line{ data: { percentage: @local_authority_percentage_homeless } }
             %span=number_to_percentage(@local_authority_percentage_homeless, precision: 2)
       .average
         %dl
           %dt National average
           %dd
-            .line
+            .line{ data: { percentage: @homeless_average } }
+            %span=number_to_percentage(@homeless_average)
+
+  %section.need-fulfilled
+    .row
+      .stat
+        .house-scale
+          85
+        .type
+          Households in need of social housing
+      .stat
+        .house-scale
+          30
+        .type
+          Houses available
+    .row
+      .columns.large-8
+        .compare
+          %dl
+            %dt=@local_authority.name
+            %dd
+              .line{ data: { percentage: @local_authority_houses_sold } }
+              %span=number_to_percentage(@local_authority_houses_sold)
+        .average
+          %dl
+            %dt National average
+            %dd
+              .line{ data: { percentage: @houses_sold_average } }
+              %span=number_to_percentage(@houses_sold_average)
+
+  %section.row
+    .stat.sold.sm
+      10
+      .type
+        Social housing houses sold
+      .compare
+        %dl
+          %dt=@local_authority.name
+          %dd
+            .line{ data: { percentage: @local_authority_houses_sold } }
+            %span=number_to_percentage(@local_authority_houses_sold)
+      .average
+        %dl
+          %dt National average
+          %dd
+            .line{ data: { percentage: @homeless_average } }
             %span=number_to_percentage(@homeless_average, precision: 2)
