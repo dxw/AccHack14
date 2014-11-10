@@ -4,7 +4,7 @@
 
   %section.row
     .house{:class => "icon-home-1"}
-    .stat
+    .stat.medium-6.small-9.columns
       = try(@households)
       .type
         Households in
@@ -13,7 +13,7 @@
   %section.row
     .large-12.columns
       %hr
-    .stat.social.sm
+    .stat.social.sm.medium-6.columns
       = try(@social_housing)
       .type
         Social housing households
@@ -34,7 +34,7 @@
             .line-full
             %span=try_percentage(@social_housing_average_households)
 
-    .stat.homeless.sm
+    .stat.homeless.sm.medium-6.columns
       = try(@number_of_homeless)
       .type
         Homeless households
@@ -58,29 +58,30 @@
     .row
       .large-12.columns
         %hr
-      .row
-        .large-8.columns
-          .stat
+      .medium-8.columns
+        .row
+          .stat.medium-6.columns
             .house-scale
               = try(@total_need)
             .type
               Households in need of social housing
-          .stat
+          .stat.medium-6.columns
             .house-scale
               = try(@social_housing)
             .type
               Houses available
-          .row
-            .large-12.columns
-              .stat.compare
-                %h2 % of need fulfilled for social housing
+        .row
+          .large-12.columns
+            %h2 % of need fulfilled for social housing
+            .row
+              .stat.compare.medium-6.columns
                 %dl
                   %dt=@local_authority.name
                   %dd
                     .line{ data: { percentage: @local_authority_percentage_need } }
                     .line-full
                     %span=try_percentage(@local_authority_percentage_need)
-              .stat.average
+              .stat.average.medium-6.columns
                 %dl
                   %dt National average
                   %dd
@@ -88,13 +89,16 @@
                     .line-full
                     %span=try_percentage(@need_average)
 
-        .stat.large-4.sold.sm
+      .medium-4.columns.sold.sm
+        .stat
           .house-scale.color
             = try(@local_authority_houses_sold)
           .type
             Social housing houses sold
-          .compare
+        .row
+          .large-12.columns
             %h2 % of total social housing stock sold
+          .stat.compare
             %dl
               %dt=@local_authority.name
               %dd
@@ -102,7 +106,7 @@
                 .line-full
                 %span=try_percentage(@local_authority_percentage_houses_sold)
 
-          .average
+          .stat.average
             %dl
               %dt National average
               %dd

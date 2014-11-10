@@ -4,13 +4,14 @@ footer {
   padding-top: $space-medium*2;
   font-family: $font-family-body;
   a.icon-twitter {
+    display: inline-block;
     margin-right: $space-small;
     color: $twitter;
     &:before {
       margin-right: 0;
     }
     &:hover, &:focus {
-      color: darken($twitter, 5);
+      color: darken($twitter, 10);
     }
   }
 }

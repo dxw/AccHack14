@@ -1,7 +1,7 @@
 %h2
   Local authorities
 
-%ul.sieve{:class => "small-block-grid-2 large-block-grid-3 authorities"}
+%ul.sieve{:class => "small-block-grid-1 medium-block-grid-3 authorities"}
   - @local_authorities.each do |la|
     %li= link_to la.name , local_authority_path(la.la_code)
 

@@ -3,19 +3,21 @@
     margin-bottom: 30px;
   }
 
+  h2 {
+    font-size: rem-calc(20);
+    color: gray;
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 10px;
+    @media #{$medium-up} {
+      margin-top: 20px;
+    }
+  }
+
   .average, .compare {
-    width: 100%;
     font-size: rem-calc(16);
     line-height: rem-calc(16);
     margin-bottom: 5px;
-
-    h2 {
-      font-size: rem-calc(20);
-      color: gray;
-      font-weight: 300;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
 
     .line {
       display: inline-block;
@@ -50,18 +52,19 @@
   }
 
   dl {
-    @extend .row;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 0;
 
     dt {
-      @extend .large-3;
-      @extend .columns;
+      width: 35%;
+      float: left;
       font-size: rem-calc(14);
-      padding-right: 0;
       padding-top: 5px;
     }
     dd {
-      @extend .large-9;
-      @extend .columns;
+      width: 65%;
+      float: left;
       margin-bottom: 0;
       position: relative;
     }
@@ -70,32 +73,57 @@
 
 .house {
   @extend .medium-2;
-  @extend .small-4;
+  @extend .small-3;
   @extend .columns;
-  font-size: rem-calc(110);
-  line-height: rem-calc(110);
+  font-size: rem-calc(70);
+  line-height: rem-calc(70);
+  @media #{$medium-up} {
+    font-size: rem-calc(80);
+    line-height: rem-calc(80);
+  }
+  @media #{$large-up} {
+    font-size: rem-calc(110);
+    line-height: rem-calc(110);
+  }
   &:before {
     margin: 0;
   }
 }
 
 .stat {
-  @extend .medium-6;
-  @extend .small-8;
-  @extend .columns;
-  font-size: rem-calc(125);
-  line-height: rem-calc(130);
+  font-size: rem-calc(80);
+  line-height: rem-calc(90);
+  @media #{$medium-up} {
+    font-size: rem-calc(90);
+    line-height: rem-calc(100);
+  }
+  @media #{$large-up} {
+    font-size: rem-calc(125);
+    line-height: rem-calc(130);
+  }
   margin-bottom: 20px;
   font-weight: 300;
 
   .type {
-    font-size: rem-calc(35);
-    line-height: rem-calc(40);
+    font-size: rem-calc(30);
+    line-height: rem-calc(35);
+    @media #{$large-up} {
+      font-size: rem-calc(35);
+      line-height: rem-calc(40);
+    }
   }
 
   .house-scale {
-    font-size: rem-calc(105);
-    line-height: rem-calc(115);
+    font-size: rem-calc(80);
+    line-height: rem-calc(90);
+    @media #{$medium-up} {
+      font-size: rem-calc(90);
+      line-height: rem-calc(100);
+    }
+    @media #{$large-up} {
+      font-size: rem-calc(105);
+      line-height: rem-calc(115);
+    }
     &.color {
       color: $info-color;
       font-weight: 600;
@@ -106,17 +134,6 @@
     .type {
       padding-bottom: $space-small*4;
     }
-    .compare,
-    .average {
-      dl {
-        dt {
-          width: 35%;
-        }
-        dd {
-          width: 65%;
-        }
-      }
-    }
   }
 
   em {
@@ -124,3 +141,30 @@
     color: silver;
   }
 }
+
+.need-fulfilled {
+  .stat.compare,
+  .stat.average {
+    @extend .large-12;
+    @extend .columns;
+  }
+
+  .sm {
+    margin-top: 20px;
+    @media #{$medium-up} {
+      margin-top: 0;
+    }
+    .compare,
+    .average {
+      dl {
+        dt {
+          width: 40%;
+        }
+        dd {
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+
