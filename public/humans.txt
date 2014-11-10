@@ -3,10 +3,13 @@
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site:
-  Twitter:
-  Location:
+  Design & front end: @lily_dart
+  Design & front end: @magdawebdesign
+  Ruby on Rails:      @tomhipkin
+  Ruby on Rails:      @dgmstuart
+  Site:               http://www.dxw.com
+  Twitter:            @dxw
+  Location:           London
 
 /* THANKS */
   Daniel Kehoe (@rails_apps) for the RailsApps project
